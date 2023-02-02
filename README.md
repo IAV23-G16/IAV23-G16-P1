@@ -1,24 +1,25 @@
 # IAV - Base para la Práctica 1
 
 ## Autores
-- Nombre completo (Usuario GitHub)
-- Nombre completo (Usuario GitHub)
-- Nombre completo (Usuario GitHub)
+- Pablo Arredondo Nowak (PabloArrNowak)
+- Mario Miguel Cuartero (mamigu05)
+
+Link a Drive: https://drive.google.com/drive/folders/1AHgQ-kmif37ZuDwvxa-xuaC1nTWuftLC?usp=share_link
 
 ## Propuesta
-Esta práctica consiste en... 
+A partir de la base proporcionada, se deben diseñar e implementar soluciones para los siguientes comportamientos:
 
-El avatar del jugador será el **flautista**, que...
+Avatar del Jugador: **Flautista**, se mueve por el mapa (actualmente por teclado, debe ser por ratón) y puede tocar la flauta (click derecho). 
 
-Las **ratas** tendrán el siguiente comportamiento:...
+**Ratas**: Deambulan por su cuenta. Cuando se toca la flauta, siguen al **flautista** en grupo.
 
-...
+**Perro**: Persigue al flautista con predicción, hasta que se le acercan 2 o más **ratas**, que lo hacen huir.
 
 ## Punto de partida
 Se parte de un proyecto base de Unity proporcionado por el profesor aquí:
 https://github.com/Narratech/IAV-P1
 
-Consiste en... 
+Esta base incluye un avatar de **flautista** controlable por teclado, un **panel de información** en la esquina superior izquierda que indica los FPS actuales y cuenta el número de **ratas** activas, aunque este contador no se actualiza por ahora; otro panel en la esquina superior derecha, que indica los **controles** del juego (de nuevo, en teclado); un **escenario** simple con casas, árboles y un pozo; un **generador de ratas** que responde a input del jugador (teclado), aunque las **ratas** se generan en el mismo punto, haciendo que se apilen; y prefabs para el **perro** y las **ratas** que no hacen nada por ahora.
 
 ## Diseño de la solución
 
