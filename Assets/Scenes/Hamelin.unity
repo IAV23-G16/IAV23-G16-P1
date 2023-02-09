@@ -1683,6 +1683,11 @@ MonoBehaviour:
   peso: 1
   prioridad: 1
   objetivo: {fileID: 0}
+  mainCam: {fileID: 963194227}
+  distanceWalkCloseLimit: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &751997938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1699,9 +1704,9 @@ MonoBehaviour:
   combinarPorPrioridad: 0
   umbralPrioridad: 0.2
   velocidadMax: 25
-  rotacionMax: 10
+  rotacionMax: 60
   aceleracionMax: 15
-  aceleracionAngularMax: 10
+  aceleracionAngularMax: 50
   velocidad: {x: 0, y: 0, z: 0}
   rotacion: 0
   orientacion: 0
@@ -3821,6 +3826,52 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 870761177}
     m_Modifications:
+    - target: {fileID: -674011723035814566, guid: 5175d5736886518439bf9a2956a122b4,
+        type: 3}
+      propertyPath: objetivo
+      value: 
+      objectReference: {fileID: 919132148976998258}
+    - target: {fileID: -674011723035814566, guid: 5175d5736886518439bf9a2956a122b4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485804168, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
+      propertyPath: objetivo
+      value: 
+      objectReference: {fileID: 919132148976998258}
+    - target: {fileID: 1485804168, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
+      propertyPath: merodSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485804169, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
+      propertyPath: maxSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485804169, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
+      propertyPath: objetivo
+      value: 
+      objectReference: {fileID: 919132148976998258}
+    - target: {fileID: 1485804169, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
+      propertyPath: distancia
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485804169, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485804169, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
+      propertyPath: rObjetivo
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485804169, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
+      propertyPath: fRalentizado
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485804169, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
+      propertyPath: rRalentizado
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3610922820614807888, guid: 5175d5736886518439bf9a2956a122b4,
         type: 3}
       propertyPath: m_RootOrder
@@ -3861,10 +3912,30 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 3610922820614807888, guid: 5175d5736886518439bf9a2956a122b4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3610922820614807888, guid: 5175d5736886518439bf9a2956a122b4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3610922820614807888, guid: 5175d5736886518439bf9a2956a122b4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4131845400584305642, guid: 5175d5736886518439bf9a2956a122b4,
         type: 3}
       propertyPath: m_Name
       value: Rata
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131845400584305642, guid: 5175d5736886518439bf9a2956a122b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
@@ -3928,6 +3999,7 @@ GameObject:
   - component: {fileID: 751997936}
   - component: {fileID: 751997937}
   - component: {fileID: 751997938}
+  - component: {fileID: 5866666021018392499}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: Untagged
@@ -4616,6 +4688,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5866666021018392499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148976998258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae158f1095ff9d94ba5212019bf84115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radio: 5
+  efectoParticulaSuelo: {fileID: 2993916035906271186, guid: a0e6008da080f9542870694a5f0d113e,
+    type: 3}
+  efectoParticulaAire: {fileID: 2490858613321908595, guid: b5071d196485d87429e23bf87c3888e8,
+    type: 3}
 --- !u!1001 &5977170052653439588
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -20,6 +20,8 @@ namespace UCM.IAV.Movimiento
     /// </summary>
     public class Merodear : ComportamientoAgente
     {
+        [SerializeField] float merodSpeed = 5;
+
         [SerializeField]
         float tiempoMaximo = 2.0f;
 
@@ -31,9 +33,29 @@ namespace UCM.IAV.Movimiento
 
         Direccion lastDir = new Direccion();
 
+        float getRandomTimeAmount()
+        {
+            return (float)Random.Range(tiempoMinimo * 100, tiempoMaximo * 100) / 100;
+        }
+
+        void changeDir()
+        {
+            lastDir.lineal.x = Random.Range(-100, 100);
+            lastDir.lineal.z = Random.Range(-100, 100);
+            lastDir.lineal.Normalize();
+            lastDir.lineal *= merodSpeed;
+            Invoke(nameof(changeDir), getRandomTimeAmount());
+        }
+
         public override Direccion GetDireccion(){
-            // IMPLEMENTAR merodear
-            return new Direccion();
+
+            if (lastDir.lineal == Vector3.zero)
+            {
+                changeDir();
+            }
+
+            Debug.Log(lastDir.lineal);
+            return lastDir;
         }
 
     }

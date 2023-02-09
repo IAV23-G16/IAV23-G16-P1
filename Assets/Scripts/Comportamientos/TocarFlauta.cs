@@ -48,7 +48,7 @@ namespace UCM.IAV.Movimiento
         void Update()
         {
             // si tocamos la flauta
-            if (Input.GetKeyDown(KeyCode.Space) && !isActive)
+            if (Input.GetButtonDown("PlayFlute") && !isActive)
             {
                 // activamos particulas
                 activateParticle(ref particleSuelo, ref efectoParticulaSuelo);               
@@ -63,7 +63,7 @@ namespace UCM.IAV.Movimiento
 
                 audio.Play(); // activamos sonido de flauta
             }
-            else if (Input.GetKeyUp(KeyCode.Space)) // si dejamos de tocar la flauta
+            else if (Input.GetButtonUp("PlayFlute")) // si dejamos de tocar la flauta
             {
                 isActive = false; // activamos el trigger
                 trigger.enabled = false;

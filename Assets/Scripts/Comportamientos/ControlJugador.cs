@@ -11,12 +11,23 @@
 namespace UCM.IAV.Movimiento
 {
     using UnityEngine;
+    using UnityEngine.UIElements;
 
     /// <summary>
     /// El comportamiento de agente que consiste en ser el jugador
     /// </summary>
     public class ControlJugador: ComportamientoAgente
     {
+        [SerializeField] Camera mainCam;
+        [SerializeField] float distanceWalkCloseLimit;
+        [SerializeField] LayerMask layerMask;
+        Vector3 targetPos;
+
+        private void Start()
+        {
+            targetPos = transform.position;
+        }
+
         /// <summary>
         /// Obtiene la dirección
         /// </summary>
@@ -25,10 +36,28 @@ namespace UCM.IAV.Movimiento
         public override Direccion GetDireccion()
         {
             Direccion direccion = new Direccion();
-            
-            //Direccion actual
-            direccion.lineal.x = Input.GetAxis("Horizontal");
-            direccion.lineal.z = Input.GetAxis("Vertical");
+
+            if (Input.GetButton("WalkToPoint"))
+            {
+                Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                Physics.Raycast(ray, out hit, 100, layerMask);
+
+                targetPos = hit.point;
+            }
+
+            ////Direccion actual
+            direccion.lineal.x = targetPos.x - transform.position.x;
+            direccion.lineal.z = targetPos.z - transform.position.z;
+
+            if (Mathf.Abs(direccion.lineal.x) < distanceWalkCloseLimit && Mathf.Abs(direccion.lineal.z) < distanceWalkCloseLimit)
+            {
+                direccion.lineal.x = 0;
+                direccion.lineal.z = 0;
+            }
+
+            //direccion.lineal.x = Input.GetAxis("Horizontal");
+            //direccion.lineal.z = Input.GetAxis("Vertical");
 
             //Resto de cálculo de movimiento
             direccion.lineal.Normalize();

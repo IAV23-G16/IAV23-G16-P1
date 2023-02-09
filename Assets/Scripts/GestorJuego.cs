@@ -133,7 +133,11 @@ namespace UCM.IAV.Movimiento
             if (rataPrefab == null || rataGO == null)
                 return;
 
-            Instantiate(rataPrefab, rataGO.transform).GetComponent<Separacion>().targEmpty = rataGO;
+            GameObject rata = Instantiate(rataPrefab, rataGO.transform);
+            rata.GetComponent<Separacion>().targEmpty = rataGO;
+            rata.GetComponent<Merodear>().enabled = true;
+            rata.GetComponent<Separacion>().enabled = false;
+            rata.GetComponent<Llegada>().enabled = false;
 
             numRats++;
             ratText.text = numRats.ToString();
