@@ -54,7 +54,6 @@ namespace UCM.IAV.Movimiento
                 changeDir();
             }
 
-            Debug.Log(lastDir.lineal);
             return lastDir;
         }
 

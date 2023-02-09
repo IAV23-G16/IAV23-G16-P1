@@ -107,7 +107,7 @@ namespace UCM.IAV.Movimiento
         {
             // Activamos o desactivamos los comportamientos que ocurren si se toca la flauta
             rat.GetComponent<Merodear>().enabled = false;
-
+            rat.GetComponent<Llegada>().enabled = true;
             rat.GetComponent<Separacion>().enabled = true;
             //perroSepar.enabled = true;
 

@@ -19,6 +19,7 @@ namespace UCM.IAV.Movimiento
     public class Llegada : ComportamientoAgente
     {
         [SerializeField] float maxSpeed;
+        [SerializeField] float maxAccel;
 
         // El radio para llegar al objetivo
         public float rObjetivo;
@@ -26,15 +27,10 @@ namespace UCM.IAV.Movimiento
         // El radio en el que se empieza a ralentizarse
         public float rRalentizado;
 
-        public float fRalentizado;
+        Direccion lastDir = new Direccion();
 
-        public int distancia = 7;
+        public float timeToAccel = 0.03f;
 
-        // El tiempo en el que conseguir la aceleracion objetivo
-        float timeToTarget = 0.1f;
-
-
-        
 
         /// <summary>
         /// Obtiene la dirección
@@ -46,20 +42,45 @@ namespace UCM.IAV.Movimiento
             Vector3 dir = objetivo.transform.position - transform.position;
             float dist = dir.magnitude;
             Direccion d = new Direccion();
+            float targetSpeed = 0.0f;
+            float speedDiff;
 
             if (dist < rObjetivo)
             {
+                speedDiff = targetSpeed - lastDir.lineal.magnitude;
+                d.lineal = dir.normalized * speedDiff;
+                lastDir.lineal = d.lineal;
+                d.lineal /= timeToAccel;
+                Debug.Log(d.lineal);
                 return d;
             }
 
             if (dist > rRalentizado)
             {
-                d.lineal = dir.normalized * maxSpeed;
+                speedDiff = maxSpeed - lastDir.lineal.magnitude;
+                d.lineal = dir.normalized * speedDiff;
+                lastDir.lineal = d.lineal;
+                d.lineal /= timeToAccel;
+                Debug.Log(d.lineal);
                 return d;
             }
 
-            float slowSpeed = maxSpeed * dist / rRalentizado;
-            d.lineal = dir.normalized * slowSpeed;
+            targetSpeed = maxSpeed * dist / rRalentizado;
+
+            speedDiff = targetSpeed - lastDir.lineal.magnitude;
+
+            d.lineal = dir.normalized * speedDiff;
+
+            if (d.lineal.magnitude > maxAccel)
+            {
+                speedDiff = maxSpeed - lastDir.lineal.magnitude;
+                d.lineal = dir.normalized * speedDiff;
+            }
+
+            lastDir.lineal = d.lineal;
+            d.lineal /= timeToAccel;
+            Debug.Log(d.lineal);
+
             return d;
 
         }

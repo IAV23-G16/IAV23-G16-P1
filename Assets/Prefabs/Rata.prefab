@@ -96,7 +96,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4131845400584305642}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c1fd1036b200c341a7549fe5c2119d4, type: 3}
   m_Name: 
@@ -105,8 +105,8 @@ MonoBehaviour:
   prioridad: 1
   objetivo: {fileID: 0}
   targEmpty: {fileID: 0}
-  umbral: 0
-  decayCoefficient: 0
+  umbral: 3
+  decayCoefficient: 1
 --- !u!114 &1485804168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4131845400584305642}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fc0c5073ef546042b3ba1dd5b02498a, type: 3}
   m_Name: 
@@ -140,10 +140,12 @@ MonoBehaviour:
   peso: 1
   prioridad: 1
   objetivo: {fileID: 0}
-  rObjetivo: 0
-  rRalentizado: 0
-  fRalentizado: 0
-  distancia: 7
+  maxSpeed: 15
+  maxAccel: 3
+  rObjetivo: 3
+  rRalentizado: 10
+  fRalentizado: 3
+  distancia: 20
 --- !u!1 &8741895683886266571
 GameObject:
   m_ObjectHideFlags: 0

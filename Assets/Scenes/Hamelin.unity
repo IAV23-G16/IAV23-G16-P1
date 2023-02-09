@@ -2039,7 +2039,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -3831,18 +3830,13 @@ PrefabInstance:
       propertyPath: objetivo
       value: 
       objectReference: {fileID: 919132148976998258}
-    - target: {fileID: -674011723035814566, guid: 5175d5736886518439bf9a2956a122b4,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1485804168, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
       propertyPath: objetivo
       value: 
       objectReference: {fileID: 919132148976998258}
-    - target: {fileID: 1485804168, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
-      propertyPath: merodSpeed
-      value: 5
+    - target: {fileID: 1485804169, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
+      propertyPath: peso
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1485804169, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
       propertyPath: maxSpeed
@@ -3854,23 +3848,15 @@ PrefabInstance:
       objectReference: {fileID: 919132148976998258}
     - target: {fileID: 1485804169, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
       propertyPath: distancia
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1485804169, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1485804169, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
       propertyPath: rObjetivo
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1485804169, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
-      propertyPath: fRalentizado
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1485804169, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
       propertyPath: rRalentizado
-      value: 8
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3610922820614807888, guid: 5175d5736886518439bf9a2956a122b4,
         type: 3}
@@ -3931,11 +3917,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rata
-      objectReference: {fileID: 0}
-    - target: {fileID: 4131845400584305642, guid: 5175d5736886518439bf9a2956a122b4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
@@ -4700,7 +4681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae158f1095ff9d94ba5212019bf84115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radio: 5
+  radio: 10
   efectoParticulaSuelo: {fileID: 2993916035906271186, guid: a0e6008da080f9542870694a5f0d113e,
     type: 3}
   efectoParticulaAire: {fileID: 2490858613321908595, guid: b5071d196485d87429e23bf87c3888e8,
