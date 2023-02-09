@@ -7,7 +7,7 @@
 Link a Drive: https://drive.google.com/drive/folders/1AHgQ-kmif37ZuDwvxa-xuaC1nTWuftLC?usp=share_link
 
 ## Propuesta
-A partir de la base proporcionada, se deben diseñar e implementar soluciones para los siguientes comportamientos:
+A partir de la base proporcionada, se deben diseñar e implementar soluciones para los siguientes comportamientos, indicados en https://narratech.com/es/inteligencia-artificial-para-videojuegos/percepcion-y-movimiento/plaga-de-ratas/ :
 
 Avatar del Jugador: **Flautista**, se mueve por el mapa (actualmente por teclado, debe ser por ratón) y puede tocar la flauta (click derecho). 
 
@@ -20,6 +20,20 @@ Se parte de un proyecto base de Unity proporcionado por el profesor aquí:
 https://github.com/Narratech/IAV-P1
 
 Esta base incluye un avatar de **flautista** controlable por teclado, un **panel de información** en la esquina superior izquierda que indica los FPS actuales y cuenta el número de **ratas** activas, aunque este contador no se actualiza por ahora; otro panel en la esquina superior derecha, que indica los **controles** del juego (de nuevo, en teclado); un **escenario** simple con casas, árboles y un pozo; un **generador de ratas** que responde a input del jugador (teclado), aunque las **ratas** se generan en el mismo punto, haciendo que se apilen; y prefabs para el **perro** y las **ratas** que no hacen nada por ahora.
+
+Se incluyen los siguientes scripts/clases:
+
+**Merodear**, que no está implementada, pero hará deambular a las ratas.
+**ControlJugador**, que
+**LLegada**, que
+**Huir**, que
+**Separacion**, que
+**TocarFlauta**, que
+**Agente**, que
+**ComportamientoAgente**, que
+**Dreccion**, que
+**GestorJuego**, que
+
 
 ## Diseño de la solución
 
