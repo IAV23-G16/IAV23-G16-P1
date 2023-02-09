@@ -23,16 +23,25 @@ Esta base incluye un avatar de **flautista** controlable por teclado, un **panel
 
 Se incluyen los siguientes scripts/clases:
 
-**Merodear**, que no está implementada, pero hará deambular a las ratas.
-**ControlJugador**, que
-**LLegada**, que
-**Huir**, que
-**Separacion**, que
-**TocarFlauta**, que
-**Agente**, que
-**ComportamientoAgente**, que
-**Dreccion**, que
-**GestorJuego**, que
+- **Merodear**, que no está implementada, pero hará deambular a las ratas.
+
+- **ControlJugador**, que hereda de la clase "ComportamientoAgente" y que, en principio, controlaba el movimiento y la dirección del avatar del jugador con el teclado, pero que ahora está implementado el control con ratón.
+
+- **Llegada**, que hereda de la clase "ComportamientoAgente" y que hace que el agente que lo tenga siga a un agente asignado como objetivo.
+
+- **Huir**, que no está implementado, pero hará huir al perro cuando haya más de dos ratas cerca de él.
+
+- **Separacion**, que no está implementado, pero hará que las ratas mantengan su dirección pero con separación entre unas y otras.
+
+- **TocarFlauta**, que activa varios sistemas de partículas al pulsar una tecla determinada y permite que las ratas activen y desactiven ciertos comportamientos que hacen que sigan o no al avatar del jugador.
+
+- **Agente**, que es usado por todos los personajes y permite mover a los personajes en base a las direcciones que tiene.
+
+- **ComportamientoAgente**, que es la clase de la cual heredan varios scripts de los personajes y que declaran ciertas variables y devuelven direcciones.
+
+- **Direccion**, que es una clase que representa la dirección mediante aceleraciones.
+
+- **GestorJuego**, que es una clase que gestiona cada ámbito del juego como: la información que sale en pantalla; el spawn y despawn de ratas; la acción de volver a empezar la escena; cambio de vista de cámara...
 
 
 ## Diseño de la solución
