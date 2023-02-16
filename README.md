@@ -102,7 +102,96 @@ class Arrive:
         return result
 ```
 
-El pseudocódigo del algoritmo de movimiento de huida es...
+El pseudocódigo del algoritmo de separación utilizado es:
+```
+class Separation:
+    # Holds the kinematic data for the character
+    character
+
+    # Holds a list of potential targets
+    targets
+
+    # Holds the threshold to take action
+    threshold
+
+    # Holds the constant coefficient of decay for the
+    # inverse square law force
+    decayCoefficient
+
+    # Holds the maximum acceleration of the character
+    maxAcceleration
+
+    # See the Implementation Notes for why we have two
+    # getSteering methods
+    def getSteering():
+
+        # The steering variable holds the output
+        steering = new Steering
+
+        # Loop through each target
+        for target in targets:
+
+            # Check if the target is close
+            direction = target.position - character.position
+            distance = direction.length()
+            if distance < threshold:
+
+                # Calculate the strength of repulsion
+                strength = min(decayCoefficient / (distance * distance),
+                maxAcceleration)
+
+                # Add the acceleration
+                direction.normalize()
+                steering.linear += strength * direction
+
+         # We’ve gone through all targets, return the result
+         return steering
+```
+
+El pseudocódigo del algoritmo de movimiento de persecución y huida es:
+```
+class Pursue (Seek):
+
+ # Holds the maximum prediction time
+ maxPrediction
+
+ # OVERRIDES the target data in seek (in other words
+ # this class has two bits of data called target:
+ # Seek.target is the superclass target which
+ # will be automatically calculated and shouldn’t
+ # be set, and Pursue.target is the target we’re
+ # pursuing).
+ target
+
+ # ... Other data is derived from the superclass ...
+
+ def getSteering():
+
+     # 1. Calculate the target to delegate to seek
+
+     # Work out the distance to target
+     direction = target.position - character.position
+     distance = direction.length()
+
+     # Work out our current speed
+     speed = character.velocity.length()
+
+     # Check if speed is too small to give a reasonable
+     # prediction time
+     if speed <= distance / maxPrediction:
+     prediction = maxPrediction
+
+     # Otherwise calculate the prediction time
+     else:
+     prediction = distance / speed
+
+     # Put the target together
+     Seek.target = explicitTarget
+     Seek.target.position += target.velocity * prediction
+
+     # 2. Delegate to seek
+     return Seek.getSteering()
+```
 
 También es posible mostrar diagramas...
 
