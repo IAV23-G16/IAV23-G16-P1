@@ -106,7 +106,7 @@ MonoBehaviour:
   objetivo: {fileID: 0}
   targEmpty: {fileID: 0}
   umbral: 3
-  decayCoefficient: 1
+  decayCoefficient: 10
 --- !u!114 &1485804168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,14 +138,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   peso: 1
-  prioridad: 1
+  prioridad: 2
   objetivo: {fileID: 0}
   maxSpeed: 15
   maxAccel: 3
   rObjetivo: 3
   rRalentizado: 10
-  fRalentizado: 3
-  distancia: 20
+  timeToAccel: 0.001
 --- !u!1 &8741895683886266571
 GameObject:
   m_ObjectHideFlags: 0

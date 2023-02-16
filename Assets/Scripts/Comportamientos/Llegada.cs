@@ -42,41 +42,31 @@ namespace UCM.IAV.Movimiento
             Vector3 dir = objetivo.transform.position - transform.position;
             float dist = dir.magnitude;
             Direccion d = new Direccion();
-            float targetSpeed = 0.0f;
             float speedDiff;
 
             if (dist < rObjetivo)
             {
-                speedDiff = targetSpeed - lastDir.lineal.magnitude;
-                d.lineal = dir.normalized * speedDiff;
-                lastDir.lineal = d.lineal;
-                d.lineal /= timeToAccel;
-                Debug.Log(d.lineal);
-                return d;
+                speedDiff = -lastDir.lineal.magnitude;
             }
-
-            if (dist > rRalentizado)
+            else if (dist > rRalentizado)
             {
                 speedDiff = maxSpeed - lastDir.lineal.magnitude;
-                d.lineal = dir.normalized * speedDiff;
-                lastDir.lineal = d.lineal;
-                d.lineal /= timeToAccel;
-                Debug.Log(d.lineal);
-                return d;
             }
+            else
+            {
+                float targetSpeed = maxSpeed * dist / rRalentizado;
 
-            targetSpeed = maxSpeed * dist / rRalentizado;
+                speedDiff = targetSpeed - lastDir.lineal.magnitude;
 
-            speedDiff = targetSpeed - lastDir.lineal.magnitude;
+                d.lineal = dir.normalized * speedDiff;
+
+                if (d.lineal.magnitude > maxAccel)
+                {
+                    speedDiff = maxSpeed - lastDir.lineal.magnitude;
+                }
+            }
 
             d.lineal = dir.normalized * speedDiff;
-
-            if (d.lineal.magnitude > maxAccel)
-            {
-                speedDiff = maxSpeed - lastDir.lineal.magnitude;
-                d.lineal = dir.normalized * speedDiff;
-            }
-
             lastDir.lineal = d.lineal;
             d.lineal /= timeToAccel;
             Debug.Log(d.lineal);

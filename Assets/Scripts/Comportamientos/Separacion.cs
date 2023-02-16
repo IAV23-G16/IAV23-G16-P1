@@ -35,11 +35,32 @@ namespace UCM.IAV.Movimiento
 
         private GameObject[] targets;
 
-
         public override Direccion GetDireccion()
         {
-            // IMPLEMENTAR separación
-            return new Direccion();
+            Direccion dir = new Direccion();
+            targets = new GameObject[targEmpty.transform.childCount];
+
+            targEmpty = transform.parent.gameObject;
+
+
+            for (int i = 0; i < targEmpty.transform.childCount; i++)
+            {
+                targets[i] = targEmpty.transform.GetChild(i).gameObject;
+            }
+
+            foreach (GameObject target in targets)
+            {
+                if (gameObject == target)   continue;
+
+                Vector3 dist = target.transform.position - transform.position;
+                if (dist.magnitude < umbral)
+                {
+                    float repulsionStrength = decayCoefficient / dist.sqrMagnitude;
+                    dir.lineal += repulsionStrength * -dist.normalized;
+                }
+            }
+
+            return dir;
         }
     }
 }
