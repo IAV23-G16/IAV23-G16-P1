@@ -73,12 +73,20 @@ namespace UCM.IAV.Movimiento
                 d.lineal += dir.normalized * speedDiff;
                 lastDir.lineal = d.lineal;
                 d.lineal /= timeToAccel;
-                Debug.Log(d.lineal);
+                
 
+                if (d.lineal.magnitude > maxAccel)
+                {
+                    d.lineal = d.lineal.normalized * maxAccel;
+                }
+
+                Debug.Log("Ratas: " + ratasCerca + " " + d.lineal);
 
             }
-            if (ratasCerca > 1)
+
+            if (ratasCerca > 1) {
                 return d;
+            }
             else return new Direccion();
         }
     }
