@@ -2540,6 +2540,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91afe50389f85ee4eac0bfaa17a9da07, type: 3}
+--- !u!1 &1239536427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3861295050334874256, guid: 5ff744207c6a5044ab297c8fc4814fc0,
+    type: 3}
+  m_PrefabInstance: {fileID: 5977170052653439588}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1239536432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239536427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baac9895d124f1944bdd6f4429b93695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  peso: 1
+  prioridad: 2
+  objetivo: {fileID: 919132148976998258}
+  maxSpeed: 10
+  maxAccel: 10
+  rObjetivo: 3
+  rRalentizado: 10
+  timeToAccel: 0.001
+  predictCoef: 10
+--- !u!114 &1239536433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239536427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04975c86d88a65349a8c27aebc417ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  peso: 1
+  prioridad: 1
+  objetivo: {fileID: 870761176}
+  maxSpeed: 10
+  maxAccel: 10
+  rObjetivo: 2
+  rRalentizado: 8
+  timeToAccel: 0.001
+  predictCoef: 5
+  ratasEmpty: {fileID: 870761176}
 --- !u!1 &1265027095
 GameObject:
   m_ObjectHideFlags: 0
@@ -3917,6 +3966,16 @@ PrefabInstance:
     - target: {fileID: 3610922820614807888, guid: 5175d5736886518439bf9a2956a122b4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3938823469589161587, guid: 5175d5736886518439bf9a2956a122b4,
+        type: 3}
+      propertyPath: combinarPorPeso
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3938823469589161587, guid: 5175d5736886518439bf9a2956a122b4,
+        type: 3}
+      propertyPath: combinarPorPrioridad
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4131845400584305642, guid: 5175d5736886518439bf9a2956a122b4,
