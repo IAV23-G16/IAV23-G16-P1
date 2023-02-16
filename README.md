@@ -4,14 +4,12 @@
 - Pablo Arredondo Nowak (PabloArrNowak)
 - Mario Miguel Cuartero (mamigu05)
 
-Link a Drive: https://drive.google.com/drive/folders/1AHgQ-kmif37ZuDwvxa-xuaC1nTWuftLC?usp=share_link
-
 ## Propuesta
 A partir de la base proporcionada, se deben diseñar e implementar soluciones para los siguientes comportamientos, indicados en https://narratech.com/es/inteligencia-artificial-para-videojuegos/percepcion-y-movimiento/plaga-de-ratas/ :
 
-Avatar del Jugador: **Flautista**, se mueve por el mapa (actualmente por teclado, debe ser por ratón) y puede tocar la flauta (click derecho). 
+Avatar del Jugador (**Flautista**): Se mueve por el mapa controlado por ratón y puede tocar la flauta con click derecho. El avatar del jugador es perseguido por el perro. Cuando el jugador toca la flauta, las ratas que se encuentren a una distancia marcada por un radio determinado, dejarán su movimiento desordenado y empezarán a seguirle. 
 
-**Ratas**: Deambulan por su cuenta. Cuando se toca la flauta, siguen al **flautista** en grupo.
+**Ratas**: Cuando la flauta no suena, deambulan por su cuenta de forma aleatoria y errática a una velocidad determinada y cambiando de dirección cada cierto tiempo. Una vez empieza a sonar, las ratas que se encuentren en proximidad al flautista, empiezan a seguirle. Cuando lleguen al radio interior, desacelerarán su velocidad hasta 0. Además, se producirá una separación entre ellas marcadas por un coeficiente de distancia.
 
 **Perro**: Persigue al flautista con predicción, hasta que se le acercan 2 o más **ratas**, que lo hacen huir.
 
@@ -19,13 +17,20 @@ Avatar del Jugador: **Flautista**, se mueve por el mapa (actualmente por teclado
 Se parte de un proyecto base de Unity proporcionado por el profesor aquí:
 https://github.com/Narratech/IAV-P1
 
-Esta base incluye un avatar de **flautista** controlable por teclado, un **panel de información** en la esquina superior izquierda que indica los FPS actuales y cuenta el número de **ratas** activas, aunque este contador no se actualiza por ahora; otro panel en la esquina superior derecha, que indica los **controles** del juego (de nuevo, en teclado); un **escenario** simple con casas, árboles y un pozo; un **generador de ratas** que responde a input del jugador (teclado), aunque las **ratas** se generan en el mismo punto, haciendo que se apilen; y prefabs para el **perro** y las **ratas** que no hacen nada por ahora.
+En la escena se encuentran:
+- **Cámara**, que contiene un script que hace seguir al jugador.
+- **Avatar**, al que puedes controlar por teclado haciendo que pueda rotar y moverse. Además también contiene el script "TocarFlauta" que le permite tocar la flauta.
+- **Perro**, prefab que sólo tiene los componentes básicos (transform, rigidbody...)
+- **Generador de ratas**, que responde al input del jugador por teclado y las genera en un mismo punto fijo, haciendo que se apilen una sobre otra. Estas ratas sólo tienen los componentes básicos (transform, rigidbody...)
+- **Gestor de juego**, que contiene el script "GestorJuego" que permite informar al jugador, spawnear y despawnear ratas, volver a recargar la escena, cambiar la vista de la cámara...
+- **Canvas**, que una vez ha comenzado el juego, muestra por pantalla información sobre el número de ratas que se encuentran en la escena; FPS actuales; cómo generar y eliminar ratas; cómo activar y desactivar obstáculos; y en general, información del input del teclado.
+- **Obstaculos y escenario**, que está formado por una serie de casas y árboles y un pozo.
 
 Se incluyen los siguientes scripts/clases:
 
 - **Merodear**, que no está implementada, pero hará deambular a las ratas.
 
-- **ControlJugador**, que hereda de la clase "ComportamientoAgente" y que, en principio, controlaba el movimiento y la dirección del avatar del jugador con el teclado, pero que ahora está implementado el control con ratón.
+- **ControlJugador**, que hereda de la clase "ComportamientoAgente" y que, en principio, controlaba el movimiento y la dirección del avatar del jugador con el teclado, pero que ahora está implementado el control con ratón: se crea un rayo desde la cámara en la posición del ratón hacia el mundo, que solo colisiona con el suelo, y se acelera al avatar del jugador hacia el punto de colisión.
 
 - **Llegada**, que hereda de la clase "ComportamientoAgente" y que hace que el agente que lo tenga siga a un agente asignado como objetivo.
 
@@ -101,6 +106,8 @@ class Arrive:
         result.angular = 0
         return result
 ```
+El script **"Llegada"** permite aumentar la aceleración lineal de un agente en dirección a otro según la distancia entre ambos.
+
 
 El pseudocódigo del algoritmo de separación utilizado es:
 ```
@@ -147,6 +154,8 @@ class Separation:
          # We’ve gone through all targets, return the result
          return steering
 ```
+El script **"Separación"** consigue que a una cierta distancia aplique un coeficiente de distancia que separa a unos agentes determinados.
+
 
 El pseudocódigo del algoritmo de movimiento de persecución y huida es:
 ```
@@ -192,22 +201,9 @@ class Pursue (Seek):
      # 2. Delegate to seek
      return Seek.getSteering()
 ```
+El script **"Persecución"** es igual al script "Llegada", pero con la diferencia de que multiplica la velocidad del agente como objetivo, sin cambiar la velocidad del agente.
 
-También es posible mostrar diagramas...
-
-![diagram](./Docs/diagrama.png)
-
-Mejor que insertando imágenes, se puede usar Mermaid:
-
-```mermaid
-stateDiagram
-    [*] --> Inicio
-    Inicio --> Juego
-    Juego --> Muerte
-    Juego --> Victoria
-    Muerte --> Inicio
-    Victoria --> Inicio
-```
+El script **"Huir"** es igual al script "Persecución", pero en vez de seguir al agente asigando como objetivo, huye de él.ç
 
 ## Pruebas y métricas
 
@@ -223,22 +219,13 @@ Se han realizado las siguientes ampliaciones
 
 Las tareas se han realizado y el esfuerzo ha sido repartido entre los autores.
 
-| Estado  |  Tarea  |  Fecha  |  
-|:-:|:--|:-:|
-| ✔ | Diseño: Primer borrador | 2-12-2022 |
-| ✔ | Característica A: Nosequé | 11-12-2022 |
-| ✔ | Característica B: Nosecuentos| 12-12-2022 |
-|   | ... | |
-|  | OPCIONAL |  |
-| ✔ | Generador pseudoaleatorio | 3-12-2022 |
-| :x: | Menú | 3-12-2022 |
-| :x: | HUD | 12-12-2022 |
-
 ## Referencias
 
 Los recursos de terceros utilizados son de uso público.
 
 - *AI for Games*, Ian Millington.
+    - 3.3.8 "Pursue and Evade", 68.
+    - 3.3.13 "Separation", 82.
 - [Kaykit Medieval Builder Pack](https://kaylousberg.itch.io/kaykit-medieval-builder-pack)
 - [Kaykit Dungeon](https://kaylousberg.itch.io/kaykit-dungeon)
 - [Kaykit Animations](https://kaylousberg.itch.io/kaykit-animations)
