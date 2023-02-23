@@ -203,11 +203,11 @@ class Pursue (Seek):
 ```
 El script **"Persecución"** es igual al script "Llegada", pero con la diferencia de que multiplica la velocidad del agente como objetivo, sin cambiar la velocidad del agente.
 
-El script **"Huir"** es igual al script "Persecución", pero en vez de seguir al agente asigando como objetivo, huye de él.ç
+El script **"Huir"** es igual al script "Persecución", pero en vez de seguir al agente asigando como objetivo, huye de él.
 
 ## Pruebas y métricas
 
-- [Vídeo con la batería de pruebas](https://youtu.be/xxxxx)
+- [Vídeo con la batería de pruebas](https://www.youtube.com/watch?v=ZFJh-D9o0y0)
 
 ## Ampliaciones
 
