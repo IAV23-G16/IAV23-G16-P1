@@ -33,11 +33,17 @@ namespace UCM.IAV.Movimiento
 
         Direccion lastDir = new Direccion();
 
+        /// <summary>
+        /// Calcula un valor de tiempo aleatorio dentro de un intervalo
+        /// </summary>
         float getRandomTimeAmount()
         {
             return (float)Random.Range(tiempoMinimo * 100, tiempoMaximo * 100) / 100;
         }
 
+        /// <summary>
+        /// Calcula una dirección aleatoria en la que ir y se prepara para volver a hacerlo en un intervalo de tiempo aleatorio
+        /// </summary>
         void changeDir()
         {
             lastDir.lineal.x = Random.Range(-100, 100);

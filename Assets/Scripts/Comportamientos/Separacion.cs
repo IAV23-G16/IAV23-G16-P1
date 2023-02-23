@@ -17,10 +17,6 @@ namespace UCM.IAV.Movimiento
 {
     public class Separacion : ComportamientoAgente
     {
-        /// <summary>
-        /// Separa al agente
-        /// </summary>
-        /// <returns></returns>
 
         // Entidades potenciales de las que huir
         public GameObject targEmpty;
@@ -35,6 +31,10 @@ namespace UCM.IAV.Movimiento
 
         private GameObject[] targets;
 
+        /// <summary>
+        /// Separa al agente
+        /// </summary>
+        /// <returns></returns>
         public override Direccion GetDireccion()
         {
             Direccion dir = new Direccion();
@@ -42,16 +42,19 @@ namespace UCM.IAV.Movimiento
 
             targEmpty = transform.parent.gameObject;
 
-
+            // Se añaden todos los hijos del empty de ratas como ratas a evadir
             for (int i = 0; i < targEmpty.transform.childCount; i++)
             {
                 targets[i] = targEmpty.transform.GetChild(i).gameObject;
             }
 
+            // Se recorren las ratas
             foreach (GameObject target in targets)
             {
+                // Cada rata se ignora a sí misma
                 if (gameObject == target)   continue;
 
+                // Si hay una rata cerca, sumamos una aceleración para alejarnos, más fuerte cuanto más cerca está
                 Vector3 dist = target.transform.position - transform.position;
                 if (dist.magnitude < umbral)
                 {
@@ -60,6 +63,7 @@ namespace UCM.IAV.Movimiento
                 }
             }
 
+            // Se devuelve la suma de separarse de todas las demás ratas cercanas
             return dir;
         }
     }

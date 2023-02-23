@@ -33,15 +33,17 @@ namespace UCM.IAV.Movimiento
         /// Obtiene la dirección
         /// </summary>
         /// <returns></returns>
-
         public override Direccion GetDireccion()
         {
             Direccion direccion = new Direccion();
-
+            
+            // Al pulsar ratón
             if (Input.GetButton("WalkToPoint"))
             {
+                // Si no pulsamos la UI
                 if (EventSystem.current.IsPointerOverGameObject()) return direccion;
 
+                // Pillamos el punto del suelo en el que pulsamos
                 Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
                 Physics.Raycast(ray, out hit, 100, layerMask);
@@ -49,24 +51,20 @@ namespace UCM.IAV.Movimiento
                 targetPos = hit.point;
             }
 
-            ////Direccion actual
+            // Direccion actual
             direccion.lineal.x = targetPos.x - transform.position.x;
             direccion.lineal.z = targetPos.z - transform.position.z;
 
+            // Deadzone, para que no ande alante y atrás al llegar a su destino
             if (Mathf.Abs(direccion.lineal.x) < distanceWalkCloseLimit && Mathf.Abs(direccion.lineal.z) < distanceWalkCloseLimit)
             {
                 direccion.lineal.x = 0;
                 direccion.lineal.z = 0;
             }
 
-            //direccion.lineal.x = Input.GetAxis("Horizontal");
-            //direccion.lineal.z = Input.GetAxis("Vertical");
-
             //Resto de cálculo de movimiento
             direccion.lineal.Normalize();
             direccion.lineal *= agente.aceleracionMax;
-
-            // Podríamos meter una rotación automática en la dirección del movimiento, si quisiéramos
 
             return direccion;
         }

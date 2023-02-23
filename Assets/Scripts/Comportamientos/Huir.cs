@@ -35,26 +35,34 @@ namespace UCM.IAV.Movimiento
 
             ratas = new GameObject[ratasEmpty.transform.childCount];
 
+            // Se actualizan las ratas registradas
             for (int i = 0; i < ratasEmpty.transform.childCount; i++)
             {
                 ratas[i] = ratasEmpty.transform.GetChild(i).gameObject;
             }
 
+            // Se recorren las ratas
             foreach (GameObject rata in ratas)
             {
+                // Se predice la posición de la rata como en Persecución, multiplicando por un coeficiente
                 Vector3 dir = transform.position - (rata.transform.position + rata.GetComponent<Rigidbody>().velocity * predictCoef);
                 float dist = dir.magnitude;
                 float speedDiff;
 
+                // Si la rata está dentro del rango, se añade como rata cercana
                 if (dist < rObjetivo)
                 {
                     speedDiff = maxSpeed - lastDir.lineal.magnitude;
                     ratasCerca++;
                 }
+
+                // Si no está ni dentro del radio lejano, no se cuenta
                 else if (dist > rRalentizado)
                 {
                     speedDiff = 0;
                 }
+
+                // Si está entre ambos radios, más rápido huimos cuanto más cerca está
                 else
                 {
                     ratasCerca++;
@@ -64,6 +72,7 @@ namespace UCM.IAV.Movimiento
 
                     d.lineal = dir.normalized * speedDiff;
 
+                    // Sin pasarnos de la aceleración máxima
                     if (d.lineal.magnitude > maxAccel)
                     {
                         speedDiff = maxSpeed - lastDir.lineal.magnitude;
@@ -84,6 +93,7 @@ namespace UCM.IAV.Movimiento
 
             }
 
+            // Solo huimos si hay al menos 2 ratas cerca
             if (ratasCerca > 1) {
                 return d;
             }

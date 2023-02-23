@@ -36,22 +36,27 @@ namespace UCM.IAV.Movimiento
         /// Obtiene la dirección
         /// </summary>
         /// <returns></returns>
-
         public override Direccion GetDireccion()
         {
+            // Se calcula dirección al objetivo
             Vector3 dir = objetivo.transform.position - transform.position;
             float dist = dir.magnitude;
             Direccion d = new Direccion();
             float speedDiff;
 
+            // Si estamos dentro del radio objetivo, frenamos
             if (dist < rObjetivo)
             {
                 speedDiff = -lastDir.lineal.magnitude * 0.99f;
             }
+
+            // Si estamos fuera del radio de ralentizado, vamos a velocidad máxima
             else if (dist > rRalentizado)
             {
                 speedDiff = maxSpeed - lastDir.lineal.magnitude;
             }
+
+            // Si estamos entre ambos radios, la velocidad objetivo es proporcional a la distancia hasta el objetivo
             else
             {
                 float targetSpeed = maxSpeed * dist / rRalentizado;
@@ -60,6 +65,7 @@ namespace UCM.IAV.Movimiento
 
                 d.lineal = dir.normalized * speedDiff;
 
+                // Sin pasarnos de la aceleración máxima
                 if (d.lineal.magnitude > maxAccel)
                 {
                     speedDiff = maxSpeed - lastDir.lineal.magnitude;
