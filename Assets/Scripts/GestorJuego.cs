@@ -143,7 +143,7 @@ namespace UCM.IAV.Movimiento
             ratText.text = numRats.ToString();
         }
 
-        private void DespawnRata()
+        public void DespawnRata()
         {
             if (rataGO == null || rataGO.transform.childCount < 1)
                 return;
