@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace UCM.IAV.Movimiento
@@ -55,7 +55,6 @@ namespace UCM.IAV.Movimiento
             d.lineal = dir.normalized * speedDiff;
             lastDir.lineal = d.lineal;
             d.lineal /= timeToAccel;
-            // Debug.Log(d.lineal);
 
             return d;
 
