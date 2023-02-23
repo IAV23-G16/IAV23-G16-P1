@@ -213,11 +213,32 @@ El script **"Huir"** es igual al script "Persecución", pero en vez de seguir al
 
 Se han realizado las siguientes ampliaciones
 
-- Los obstáculos del escenario se colocan...
+- Control del jugador por ratón haciendo uso de "raycast".
+- Botón en la interfaz para añadir y destruir ratas.
 
 ## Producción
 
 Las tareas se han realizado y el esfuerzo ha sido repartido entre los autores.
+
+| Estado | Tarea | Fecha |
+| :----: | :---: | :---: |
+| ✔  | ReadMe: Preparación | 02-02-2023 |
+| ✔  | Característica A: Controles ratón | 09-02-2023 |
+| ✔  | Característica A: Tocar flauta | 09-02-2023 |
+| ✔  | Característica D: Merodear | 09-02-2023 |
+| ✔  | Característica E: Llegada V1 | 09-02-2023 |
+| ✔  | Característica E: Llegada V2 | 09-02-2023 |
+| ✔  | ReadMe: Scripts | 09-02-2023 |
+| ✔  | Característica E: Separación | 16-02-2023 |
+| ✔  | Característica E: Llegada refactorización | 16-02-2023 |
+| ✔  | ReadMe: Pseudocódigo | 16-02-2023 |
+| ✔  | Característica B: Persecución | 16-02-2023 |
+| ✔  | Característica C: Huir | 16-02-2023 |
+| ✔  | ReadMe: Update | 16-02-2023 |
+| ✔  | Característica A: Botones + - ratas | 23-02-2023 |
+| ✔  | Código: comentarios | 23-02-2023 |
+| ✔  | ReadMe: FIN | 23-02-2023 |
+| ✔  | Ejecutable y vídeo | 23-02-2023 |
 
 ## Referencias
 
