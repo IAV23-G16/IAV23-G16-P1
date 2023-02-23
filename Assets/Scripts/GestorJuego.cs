@@ -128,7 +128,7 @@ namespace UCM.IAV.Movimiento
                 scenario.SetActive(true);
         }
 
-        private void SpawnRata()
+        public void SpawnRata()
         {
             if (rataPrefab == null || rataGO == null)
                 return;

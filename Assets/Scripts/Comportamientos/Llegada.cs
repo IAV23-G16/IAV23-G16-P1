@@ -46,7 +46,7 @@ namespace UCM.IAV.Movimiento
 
             if (dist < rObjetivo)
             {
-                speedDiff = -lastDir.lineal.magnitude;
+                speedDiff = -lastDir.lineal.magnitude * 0.99f;
             }
             else if (dist > rRalentizado)
             {

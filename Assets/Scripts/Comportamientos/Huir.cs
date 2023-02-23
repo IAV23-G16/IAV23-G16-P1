@@ -80,7 +80,7 @@ namespace UCM.IAV.Movimiento
                     d.lineal = d.lineal.normalized * maxAccel;
                 }
 
-                Debug.Log("Ratas: " + ratasCerca + " " + d.lineal);
+                // Debug.Log("Ratas: " + ratasCerca + " " + d.lineal);
 
             }
 

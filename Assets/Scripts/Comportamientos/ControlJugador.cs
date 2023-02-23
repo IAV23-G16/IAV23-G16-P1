@@ -11,6 +11,7 @@
 namespace UCM.IAV.Movimiento
 {
     using UnityEngine;
+    using UnityEngine.EventSystems;
     using UnityEngine.UIElements;
 
     /// <summary>
@@ -39,6 +40,8 @@ namespace UCM.IAV.Movimiento
 
             if (Input.GetButton("WalkToPoint"))
             {
+                if (EventSystem.current.IsPointerOverGameObject()) return direccion;
+
                 Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
                 Physics.Raycast(ray, out hit, 100, layerMask);

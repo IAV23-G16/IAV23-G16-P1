@@ -49,7 +49,7 @@ namespace UCM.IAV.Movimiento
             d.lineal = dir.normalized * speedDiff;
             lastDir.lineal = d.lineal;
             d.lineal /= timeToAccel;
-            Debug.Log(d.lineal);
+            // Debug.Log(d.lineal);
 
             return d;
 

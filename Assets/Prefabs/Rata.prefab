@@ -137,13 +137,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fc0c5073ef546042b3ba1dd5b02498a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  peso: 1
+  peso: 0.1
   prioridad: 2
   objetivo: {fileID: 0}
-  maxSpeed: 15
+  maxSpeed: 10
   maxAccel: 3
   rObjetivo: 3
-  rRalentizado: 10
+  rRalentizado: 15
   timeToAccel: 0.001
 --- !u!1 &8741895683886266571
 GameObject:
